@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/widgets/form_button.dart';
+import 'package:tiktok_clone/features/onboarding/interests_screen.dart';
 
 class LogInFormScreen extends StatefulWidget {
   const LogInFormScreen({super.key});
@@ -12,6 +13,11 @@ class LogInFormScreen extends StatefulWidget {
 
 class _LogInFormScreenState extends State<LogInFormScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  void _onSubmitTap() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const InterestsScreen()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +39,10 @@ class _LogInFormScreenState extends State<LogInFormScreen> {
                   decoration: const InputDecoration(hintText: 'Password'),
                 ),
                 Gaps.v28,
-                const FormButton(disabled: false)
+                GestureDetector(
+                  onTap: _onSubmitTap,
+                  child: const FormButton(disabled: false),
+                )
               ],
             )),
       ),
