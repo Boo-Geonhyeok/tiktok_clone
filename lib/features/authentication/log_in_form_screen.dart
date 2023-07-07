@@ -15,8 +15,11 @@ class _LogInFormScreenState extends State<LogInFormScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void _onSubmitTap() {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const InterestsScreen()));
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const InterestsScreen()),
+        ((route) {
+      return false;
+    }));
   }
 
   @override
